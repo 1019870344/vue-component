@@ -1,20 +1,12 @@
 <template>
-  <el-menu
-    mode="vertical"
-    unique-opened
-    theme="dark"
-    router
-    :collapse="false"
-    :default-active="$route.path"
-    background-color="#304156"
-    text-color="#bfcbd9"
-    active-text-color="#409EFF"
-  >
+  <el-menu mode="vertical" unique-opened :collapse="isCollapse" background-color="#304156" :default-active="$route.path" text-color="#bfcbd9"
+    active-text-color="#409EFF">
     <sidebar-item></sidebar-item>
   </el-menu>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
 export default {
   name: 'sidebar',
@@ -22,8 +14,16 @@ export default {
   data () {
     return {}
   },
-
-  methods: {}
+  computed: {
+    ...mapGetters(['sidebar']),
+    isCollapse () {
+      return !this.sidebar.opened
+    }
+  },
+  methods: {},
+  created () {
+    console.log(this.$route)
+  }
 }
 </script>
 

@@ -1,12 +1,11 @@
 <template>
-<!-- separator:分隔符 -->
+  <!-- 面包屑 -->
+  <!-- separator:分隔符 -->
   <el-breadcrumb class="app-levelbar" separator="/">
     <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-      <span
-        v-if="item.redirect === 'noredirect' || index == levelList.length - 1"
-        class="no-redirect"
-        >{{ item.name }}</span
-      >
+      <!-- 这里显示当前页面的面包屑名称 -->
+      <span v-if="item.redirect === 'noredirect' || index == levelList.length - 1" class="no-redirect">{{ item.name }}</span>
+      <!-- 显示前面的页面的可跳转面包屑名称 -->
       <router-link v-else :to="item.redirect || item.path">{{
         item.name
       }}</router-link>

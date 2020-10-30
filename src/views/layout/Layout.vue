@@ -1,8 +1,9 @@
 <template>
-  <div class="app-wrapper" >
+  <div class="app-wrapper">
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
       <navbar></navbar>
+      <TabsView></TabsView>
       <appMain></appMain>
     </div>
   </div>
@@ -10,13 +11,15 @@
 
 <script>
 import { sidebar, navbar, appMain } from '../layout/'
+import TabsView from '../layout/TabsView'
 
 export default {
   name: 'layout',
   components: {
     sidebar,
     navbar,
-    appMain
+    appMain,
+    TabsView
   },
   data () {
     return {}
@@ -27,7 +30,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-@import "src/style/mixin";
+@import 'src/style/mixin';
 .app-wrapper {
   @include clearfix;
   position: relative;

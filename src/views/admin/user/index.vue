@@ -1,50 +1,25 @@
 <template>
   <div>
-    用户管理
+    <el-popover placement="top" width="160" v-model="visible">
+      <p>这是一段内容这是一段内容确定删除吗？</p>
+      <div style="text-align: right; margin: 0">
+        <el-button size="mini" type="text" @click="visible = false">取消</el-button>
+        <el-button type="primary" size="mini" @click="visible = false">确定</el-button>
+      </div>
+      <el-button slot="reference">删除</el-button>
+    </el-popover>
+    <el-popconfirm title="这是一段内容确定删除吗？">
+      <el-button slot="reference">删除</el-button>
+    </el-popconfirm>
   </div>
 </template>
 
 <script>
-// import  from ''
-// import { mapGetters } from 'vuex'
-
 export default {
-  components: {
-
-  },
   data () {
     return {
-
+      visible: false
     }
-  },
-  // 计算属性，会监听依赖属性值随之变化
-  computed: {
-    // s...mapGetters(['userPermissions','buttonType'])
-  },
-  // 监控data中的数据变化
-  watch: {},
-  // 方法集合
-  methods: {
-
-  },
-  // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
-
-  },
-  // 生命周期 - 挂载完成（可以访问DOM元素）
-  mounted () {
-
-  },
-  beforeCreate () {}, // 生命周期 - 创建之前
-  beforeMount () {}, // 生命周期 - 挂载之前
-  beforeUpdate () {}, // 生命周期 - 更新之前
-  updated () {}, // 生命周期 - 更新之后
-  beforeDestroy () {}, // 生命周期 - 销毁之前
-  destroyed () {}, // 生命周期 - 销毁完成
-  activated () {} // 如果页面有keep-alive缓存功能，这个函数会触发
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

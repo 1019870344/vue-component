@@ -1,52 +1,78 @@
 <template>
-  <div>
-    NAVBAR
+  <el-menu class="navbar" mode="horizontal">
+    <hamburger @toggleClick="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"></hamburger>
     <breadcrumb></breadcrumb>
-  </div>
+  </el-menu>
 </template>
 
 <script>
 // import  from ''
-// import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import breadcrumb from '../layout/breadcrumb'
+import hamburger from '../layout/hamburger'
 export default {
   name: 'navbar',
   components: {
-    breadcrumb
+    breadcrumb,
+    hamburger
+  },
+  computed: {
+    ...mapGetters(['sidebar'])
   },
   data () {
-    return {
-
-    }
+    return {}
   },
-  // 计算属性，会监听依赖属性值随之变化
-  computed: {
-    // s...mapGetters(['userPermissions','buttonType'])
-  },
-  // 监控data中的数据变化
-  watch: {},
-  // 方法集合
   methods: {
-
-  },
-  // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
-
-  },
-  // 生命周期 - 挂载完成（可以访问DOM元素）
-  mounted () {
-
-  },
-  beforeCreate () {}, // 生命周期 - 创建之前
-  beforeMount () {}, // 生命周期 - 挂载之前
-  beforeUpdate () {}, // 生命周期 - 更新之前
-  updated () {}, // 生命周期 - 更新之后
-  beforeDestroy () {}, // 生命周期 - 销毁之前
-  destroyed () {}, // 生命周期 - 销毁完成
-  activated () {} // 如果页面有keep-alive缓存功能，这个函数会触发
+    toggleSideBar () {
+      this.$store.dispatch('ToggleSideBar')
+    }
+  }
 }
 </script>
 
-<style scoped>
-
+<style rel="stylesheet/scss" lang="scss" scoped>
+.navbar {
+  height: 50px;
+  line-height: 50px;
+  border-radius: 0 !important;
+  .hamburger-container {
+    line-height: 58px;
+    height: 50px;
+    float: left;
+    padding: 0 10px;
+  }
+  .errLog-container {
+    display: inline-block;
+    position: absolute;
+    right: 150px;
+  }
+  .screenfull {
+    position: absolute;
+    right: 90px;
+    top: 16px;
+    color: red;
+  }
+  .avatar-container {
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    right: 35px;
+    .avatar-wrapper {
+      cursor: pointer;
+      margin-top: 5px;
+      position: relative;
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+      }
+      .el-icon-caret-bottom {
+        position: absolute;
+        right: -20px;
+        top: 25px;
+        font-size: 12px;
+      }
+    }
+  }
+}
 </style>
