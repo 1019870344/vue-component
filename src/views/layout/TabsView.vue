@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     closeViewTabs (view, $event) {
+      console.log($event)
       this.$store.dispatch('delVisitedViews', view)
       // 判断删掉的元素是否是当前正在浏览的页面
       if (this.isActive(view.path)) {

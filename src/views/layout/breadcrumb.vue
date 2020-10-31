@@ -27,7 +27,7 @@ export default {
     getBreadcrumb () {
       // this.$route.matched包含当前路由的所有嵌套路径片段的路由记录
       // filter过滤器把符合条件的过滤出来，这个地方是把数组的item.name === true过滤出来
-      let matched = this.$route.matched.filter((item) => item.name)
+      let matched = this.$route.matched.filter(item => item.name)
       // 通常数组[0]是这个路由的根节点的name
       const first = matched[0]
       // 如果最初的不是首页
