@@ -1,15 +1,22 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    :class="classObj"
+    class="app-wrapper"
+  >
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
-      <navbar></navbar>
-      <TabsView></TabsView>
-      <appMain></appMain>
+      <div :class="{'fixed-header':fixedHeader}">
+        <navbar />
+        <TabsView></TabsView>
+        <appMain></appMain>
+
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { sidebar, navbar, appMain } from '../layout/'
 import TabsView from '../layout/TabsView'
 
@@ -24,45 +31,62 @@ export default {
   data () {
     return {}
   },
+  computed: {
+    ...mapGetters(['sidebar']),
+    fixedHeader () {
+      return this.sidebar.opened
+    },
+    classObj () {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.opened
+      }
+    }
+  },
   // 方法集合
   methods: {}
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-@import 'src/style/mixin';
+<style lang="scss" scoped>
+@import '~@/style/mixin.scss';
+@import '~@/style/variables.scss';
+
 .app-wrapper {
   @include clearfix;
   position: relative;
   height: 100%;
   width: 100%;
-  &.hideSidebar {
-    .sidebar-container {
-      width: 36px;
-      overflow: inherit;
-    }
-    .main-container {
-      margin-left: 36px;
-    }
-  }
-  .sidebar-container {
-    transition: width 0.28s ease-out;
-    width: 210px;
-    height: 100%;
+  &.mobile.openSidebar {
     position: fixed;
     top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1001;
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
-  .main-container {
-    min-height: 100%;
-    transition: margin-left 0.28s ease-out;
-    margin-left: 210px;
-  }
+}
+.drawer-bg {
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sideBarWidth});
+  transition: width 0.28s;
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - 54px);
+}
+
+.mobile .fixed-header {
+  width: 100%;
 }
 </style>
