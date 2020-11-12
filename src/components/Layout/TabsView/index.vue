@@ -1,7 +1,16 @@
 <template>
   <div class="tabs-view-container">
-    <router-link class="tabs-view" v-for="tag in Array.from(visitedViews)" :to="tag.path" :key="tag.path">
-      <el-tag :closable="true" :class="isActive(tag.path) ? 'active' : ''" @close.prevent="closeViewTabs(tag, $event)">
+    <router-link
+      class="tabs-view"
+      v-for="tag in Array.from(visitedViews)"
+      :to="tag.path"
+      :key="tag.path"
+    >
+      <el-tag
+        :closable="true"
+        :class="isActive(tag.path) ? 'active' : ''"
+        @close.prevent="closeViewTabs(tag, $event)"
+      >
         {{ tag.name }}</el-tag>
     </router-link>
   </div>

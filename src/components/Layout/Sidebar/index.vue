@@ -10,10 +10,14 @@
       :active-text-color="variables.menuActiveText"
       :collapse-transition="false"
     >
-      <sidebar-item></sidebar-item>
+      <sidebar-item
+        v-for="route in $router.options.routes"
+        :key="route.path"
+        :item="route"
+        :base-path="route.path"
+      ></sidebar-item>
     </el-menu>
   </el-scrollbar>
-
 </template>
 
 <script>

@@ -1,6 +1,13 @@
 <template>
-  <el-menu class="navbar" mode="horizontal">
-    <hamburger @toggleClick="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"></hamburger>
+  <el-menu
+    class="navbar"
+    mode="horizontal"
+  >
+    <hamburger
+      @toggleClick="toggleSideBar"
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+    ></hamburger>
     <breadcrumb></breadcrumb>
   </el-menu>
 </template>
@@ -8,8 +15,8 @@
 <script>
 // import  from ''
 import { mapGetters } from 'vuex'
-import breadcrumb from '../layout/breadcrumb'
-import hamburger from '../layout/hamburger'
+import breadcrumb from '@/components/Layout/Breadcrumb/index'
+import hamburger from '@/components/Layout/Hamburger/index'
 export default {
   name: 'navbar',
   components: {

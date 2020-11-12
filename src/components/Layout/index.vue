@@ -9,7 +9,6 @@
         <navbar />
         <TabsView></TabsView>
         <appMain></appMain>
-
       </div>
     </div>
   </div>
@@ -17,8 +16,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { sidebar, navbar, appMain } from '../layout/'
-import TabsView from '../layout/TabsView'
+import sidebar from '@/components/Layout/Sidebar/index.vue'
+import navbar from '@/components/Layout/Navbar/index.vue'
+import appMain from '@/components/Layout/AppMain/index.vue'
+import TabsView from '@/components/Layout/TabsView/index.vue'
 
 export default {
   name: 'layout',
