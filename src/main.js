@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import VueCropper from 'vue-cropper'
 import '@/style/index.scss'
+import './icons' // icon
+
 Vue.use(VueCropper)
 Vue.config.productionTip = false
 Vue.use(ElementUI)

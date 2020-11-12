@@ -6,7 +6,7 @@
           :index="resolvePath(onlyOneChild.path)"
           :class="{'submenu-title-noDropdown':!isNest}"
         >
-          <!-- 这里可以添加icon -->
+          <svg-icon :icon-class="onlyOneChild.meta.icon" />
           <span>{{ onlyOneChild.meta.title }}</span>
         </el-menu-item>
       </router-link>
@@ -19,6 +19,7 @@
     >
       <template slot="title">
         <!-- 这里可以添加icon -->
+        <svg-icon :icon-class="item.meta.icon" />
         <span>{{ item.meta.title }}</span>
       </template>
       <sidebar-item
