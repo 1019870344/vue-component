@@ -6,6 +6,7 @@
           :index="resolvePath(onlyOneChild.path)"
           :class="{'submenu-title-noDropdown':!isNest}"
         >
+          <!-- 这里可以添加icon -->
           <span>{{ onlyOneChild.meta.title }}</span>
         </el-menu-item>
       </router-link>
@@ -17,6 +18,7 @@
       popper-append-to-body
     >
       <template slot="title">
+        <!-- 这里可以添加icon -->
         <span>{{ item.meta.title }}</span>
       </template>
       <sidebar-item

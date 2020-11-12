@@ -25,10 +25,11 @@ const app = {
     },
     // 添加tab
     ADD_VISITED_VIEWS: (state, view) => {
+      console.log(view)
       // 判断添加的tab如果路径已经存在则return
       if (state.visitedViews.some(v => v.path === view.path)) return
       // 否则添加
-      state.visitedViews.push({ name: view.name, path: view.path })
+      state.visitedViews.push({ name: view.name, path: view.path, affix: view.meta.affix })
     },
     // 删除tab
     DEL_VISITED_VIEWS: (state, view) => {
