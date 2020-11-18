@@ -1,5 +1,20 @@
 <template>
   <div>
+    <li class="warning-element draggable">
+      <el-row class="agile-list-row">
+        <el-col :span="4">
+          <span>输入框</span>
+        </el-col>
+        <el-col :span=20>
+          <el-input
+            placeholder="请输入内容"
+            v-model="input"
+            :disabled="true"
+          >
+          </el-input>
+        </el-col>
+      </el-row>
+    </li>
   </div>
 </template>
 
@@ -8,12 +23,13 @@
 // import { mapGetters } from 'vuex'
 
 export default {
+  name: 'QaText',
   components: {
 
   },
   data () {
     return {
-
+      input: ''
     }
   },
   // 计算属性，会监听依赖属性值随之变化

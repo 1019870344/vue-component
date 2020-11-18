@@ -1,16 +1,20 @@
 <template>
   <div>
+    <div class="item-mask"></div>
+    <dynamic-form :item="item"></dynamic-form>
   </div>
 </template>
 
 <script>
 // import  from ''
 // import { mapGetters } from 'vuex'
+import DynamicForm from '@/components/Draggable/content/DynamicForm'
 
 export default {
   components: {
-
+    DynamicForm
   },
+  props: ['item'],
   data () {
     return {
 
@@ -45,4 +49,9 @@ export default {
 </script>
 
 <style scoped>
+.item-mask {
+  width: 100%;
+  height: 100%;
+  background: black;
+}
 </style>

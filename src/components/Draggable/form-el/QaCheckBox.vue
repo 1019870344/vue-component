@@ -1,5 +1,24 @@
 <template>
   <div>
+    <li class="info-element draggable">
+      <el-row class="agile-list-row">
+        <el-col :span="4">
+          <span>复选框</span>
+        </el-col>
+        <el-col :span=20>
+          <template>
+            <el-checkbox
+              v-model="checked1"
+              disabled
+            >备选项1</el-checkbox>
+            <el-checkbox
+              v-model="checked2"
+              disabled
+            >备选项</el-checkbox>
+          </template>
+        </el-col>
+      </el-row>
+    </li>
   </div>
 </template>
 
@@ -13,7 +32,8 @@ export default {
   },
   data () {
     return {
-
+      checked1: false,
+      checked2: true
     }
   },
   // 计算属性，会监听依赖属性值随之变化

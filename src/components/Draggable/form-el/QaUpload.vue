@@ -1,5 +1,15 @@
 <template>
   <div>
+    <li class="purple-element draggable">
+      <el-row class="agile-list-row">
+        <el-col :span="4">
+          <span>文件上传</span>
+        </el-col>
+        <el-col :span=20>
+          <i class="el-icon-plus"></i>
+        </el-col>
+      </el-row>
+    </li>
   </div>
 </template>
 
@@ -45,4 +55,7 @@ export default {
 </script>
 
 <style scoped>
+.agile-list li.purple-element {
+  border-left: 3px solid #8c09e4;
+}
 </style>

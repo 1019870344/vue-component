@@ -10,12 +10,7 @@
 <script>
 export default {
   name: 'icon-svg',
-  props: {
-    iconClass: {
-      type: String,
-      required: true
-    }
-  },
+  props: ['iconClass'],
   computed: {
     iconName () {
       return `#icon-${this.iconClass}`

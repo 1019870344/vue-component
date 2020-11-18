@@ -1,5 +1,26 @@
 <template>
   <div>
+    <li class="success-element draggable">
+      <el-row class="agile-list-row">
+        <el-col :span="4">
+          <span>单选框</span>
+        </el-col>
+        <el-col :span=20>
+          <template>
+            <el-radio
+              disabled
+              v-model="radio"
+              label="禁用"
+            >备选项</el-radio>
+            <el-radio
+              disabled
+              v-model="radio"
+              label="选中且禁用"
+            >备选项</el-radio>
+          </template>
+        </el-col>
+      </el-row>
+    </li>
   </div>
 </template>
 
@@ -13,7 +34,7 @@ export default {
   },
   data () {
     return {
-
+      radio: '选中且禁用'
     }
   },
   // 计算属性，会监听依赖属性值随之变化

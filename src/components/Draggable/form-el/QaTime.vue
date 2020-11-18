@@ -1,5 +1,24 @@
 <template>
   <div>
+    <li class="blue-element draggable">
+      <el-row class="agile-list-row">
+        <el-col :span="4">
+          <span>时间</span>
+        </el-col>
+        <el-col :span=20>
+          <el-time-select
+            v-model="value"
+            :picker-options="{
+    start: '08:30',
+    step: '00:15',
+    end: '18:30'
+  }"
+            placeholder="选择时间"
+          >
+          </el-time-select>
+        </el-col>
+      </el-row>
+    </li>
   </div>
 </template>
 
@@ -13,7 +32,7 @@ export default {
   },
   data () {
     return {
-
+      value: ''
     }
   },
   // 计算属性，会监听依赖属性值随之变化
@@ -45,4 +64,7 @@ export default {
 </script>
 
 <style scoped>
+.agile-list li.blue-element {
+  border-left: 3px solid #05e0f0;
+}
 </style>

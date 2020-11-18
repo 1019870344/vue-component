@@ -53,6 +53,33 @@ export default new Router({
       }]
     },
     {
+      path: '/userManager',
+      component: Layout,
+      children: [{
+        path: 'userManager',
+        name: '用户管理',
+        component: _import('admin/user/index'),
+        meta: { title: '用户管理', icon: 'dashboard', affix: true }
+      }]
+    },
+    {
+      path: '/css',
+      component: Layout,
+      meta: { title: 'css', icon: 'icon' },
+      children: [{
+        path: 'css3d',
+        name: 'css3d动画',
+        component: _import('css/translate3d'),
+        meta: { title: 'css3d', icon: 'icon' }
+      },
+      {
+        path: 'css',
+        name: 'css动画',
+        component: _import('css/translate'),
+        meta: { title: 'css', icon: 'icon' }
+      }]
+    },
+    {
       path: '/dashboard',
       component: Layout,
       name: '基础配置管理',
@@ -131,6 +158,14 @@ export default new Router({
           name: '裁剪',
           authority: 'cropper',
           meta: { title: '裁剪', icon: 'dashboard' }
+        },
+        {
+          path: 'draggable',
+          icon: 'category',
+          component: _import('admin/approval/index'),
+          name: 'draggable',
+          authority: 'draggable',
+          meta: { title: 'draggable', icon: 'dashboard' }
         }
       ]
     },

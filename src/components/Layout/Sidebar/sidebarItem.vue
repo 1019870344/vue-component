@@ -7,7 +7,7 @@
           :class="{'submenu-title-noDropdown':!isNest}"
         >
           <svg-icon :icon-class="onlyOneChild.meta.icon" />
-          <span>{{ onlyOneChild.meta.title }}</span>
+          <span slot="title">{{ onlyOneChild.meta.title }}</span>
         </el-menu-item>
       </router-link>
     </template>
@@ -20,7 +20,7 @@
       <template slot="title">
         <!-- 这里可以添加icon -->
         <svg-icon :icon-class="item.meta.icon" />
-        <span>{{ item.meta.title }}</span>
+        <span slot="title">{{ item.meta.title }}</span>
       </template>
       <sidebar-item
         v-for="child in item.children"
