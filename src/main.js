@@ -10,7 +10,10 @@ import store from './store'
 import VueCropper from 'vue-cropper'
 import '@/style/index.scss'
 import './icons' // icon
+import Vant from 'vant'
+import 'vant/lib/index.css'
 
+Vue.use(Vant)
 Vue.use(VueCropper)
 Vue.config.productionTip = false
 Vue.use(ElementUI)

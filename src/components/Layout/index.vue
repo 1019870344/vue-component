@@ -1,14 +1,11 @@
 <template>
-  <div
-    :class="classObj"
-    class="app-wrapper"
-  >
-    <sidebar class="sidebar-container"></sidebar>
+  <div :class="classObj" class="app-wrapper">
+    <sidebar class="sidebar-container" />
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
-        <TabsView></TabsView>
-        <appMain></appMain>
+        <TabsView />
+        <appMain />
       </div>
     </div>
   </div>
@@ -22,22 +19,22 @@ import appMain from '@/components/Layout/AppMain/index.vue'
 import TabsView from '@/components/Layout/TabsView/index.vue'
 
 export default {
-  name: 'layout',
+  name: 'Layout',
   components: {
     sidebar,
     navbar,
     appMain,
     TabsView
   },
-  data () {
+  data() {
     return {}
   },
   computed: {
     ...mapGetters(['sidebar']),
-    fixedHeader () {
+    fixedHeader() {
       return this.sidebar.opened
     },
-    classObj () {
+    classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
         openSidebar: this.sidebar.opened,

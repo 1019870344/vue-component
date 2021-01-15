@@ -1,45 +1,15 @@
 <template>
   <div class="wrapper">
-    <el-button
-      type="text"
-      @click="dialogVisible = true"
-    >点击打开 Dialog</el-button>
-    <el-dialog
-      title="编辑企业logo"
-      :visible.sync="dialogVisible"
-      width="450px"
-    >
+    <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+    <el-dialog :visible.sync="dialogVisible" title="编辑企业logo" width="450px">
       <el-row :gutter="24">
-        <el-col
-          :span="12"
-          class="cropper_body"
-        >
+        <el-col :span="12" class="cropper_body">
           <div class="vueCropper">
-            <vueCropper
-              ref="cropper"
-              :img="option.img"
-              :outputSize="option.size"
-              :outputType="option.outputType"
-              :info="true"
-              :full="option.full"
-              :canMove="option.canMove"
-              :canMoveBox="option.canMoveBox"
-              :fixed="option.fixed"
-              :fixedNumber="option.fixedNumber"
-              :fixedBox="option.fixedBox"
-              :original="option.original"
-              :autoCrop="option.autoCrop"
-              :autoCropWidth="option.autoCropWidth"
-              :autoCropHeight="option.autoCropHeight"
-              :centerBox="option.centerBox"
-              :high="option.high"
-              :infoTrue="option.infoTrue"
-              :maxImgSize="option.maxImgSize"
-              @realTime="realTime"
-              :enlarge="option.enlarge"
-              :mode="option.mode"
-              :limitMinSize="option.limitMinSize"
-            ></vueCropper>
+            <vueCropper ref="cropper" :img="option.img" :output-size="option.size" :output-type="option.outputType" :info="true" :full="option.full"
+              :can-move="option.canMove" :can-move-box="option.canMoveBox" :fixed="option.fixed" :fixed-number="option.fixedNumber" :fixed-box="option.fixedBox"
+              :original="option.original" :auto-crop="option.autoCrop" :auto-crop-width="option.autoCropWidth" :auto-crop-height="option.autoCropHeight"
+              :center-box="option.centerBox" :high="option.high" :info-true="option.infoTrue" :max-img-size="option.maxImgSize" :enlarge="option.enlarge"
+              :mode="option.mode" :limit-min-size="option.limitMinSize" @realTime="realTime" />
           </div>
         </el-col>
         <el-col :span="12">
@@ -47,46 +17,23 @@
             <span class="pre-item-text">预览</span>
             <div :style="previewStyle">
               <div :style="previews.div">
-                <img
-                  :src="previews.url"
-                  :style="previews.img"
-                >
+                <img :src="previews.url" :style="previews.img">
               </div>
             </div>
           </section>
         </el-col>
       </el-row>
-      <span
-        slot="footer"
-        class="dialog-footer"
-      >
+      <span slot="footer" class="dialog-footer">
         <el-row>
           <el-col :span="12">
-            <el-upload
-              class="upload-demo"
-              action=""
-              :show-file-list="false"
-              :multiple="false"
-              accept="image/png, image/jpeg, image/gif, image/jpg"
-              :auto-upload="false"
-              :on-change="handleChange"
-            >
-              <el-button
-                size="small"
-                type="primary"
-              >重新上传</el-button>
+            <el-upload :show-file-list="false" :multiple="false" :auto-upload="false" :on-change="handleChange" class="upload-demo" action=""
+              accept="image/png, image/jpeg, image/gif, image/jpg">
+              <el-button size="small" type="primary">重新上传</el-button>
             </el-upload>
           </el-col>
           <el-col :span="12">
-            <el-button
-              size="small"
-              @click="dialogVisible = false"
-            >取 消</el-button>
-            <el-button
-              size="small"
-              type="primary"
-              @click="upload()"
-            >确 定</el-button>
+            <el-button size="small" @click="dialogVisible = false">取 消</el-button>
+            <el-button size="small" type="primary" @click="upload()">确 定</el-button>
           </el-col>
         </el-row>
 
@@ -100,7 +47,7 @@
 export default {
   components: {
   },
-  data () {
+  data() {
     return {
       dialogVisible: false,
       file: {},
@@ -153,46 +100,45 @@ export default {
         fixedBox: true
       },
       downImg: '#'
-    };
+    }
+  },
+
+  mounted() {
+
   },
   methods: {
     // 实时预览函数
-    realTime (data) {
-      const previews = data;
+    realTime(data) {
+      const previews = data
       this.previewStyle = {
         width: previews.w + 'px',
         height: previews.h + 'px',
         overflow: 'hidden',
         margin: '0',
         zoom: 180 / previews.w
-      };
-      this.previews = data;
+      }
+      this.previews = data
     },
-    handleChange (file) {
+    handleChange(file) {
       console.log(file)
       if (!/\.(gif|jpg|jpeg|png|bmp|GIF|JPG|PNG)$/.test(file.name)) {
-        this.$message.error('图片类型必须是.gif,jpeg,jpg,png,bmp中的一种');
-        return false;
+        this.$message.error('图片类型必须是.gif,jpeg,jpg,png,bmp中的一种')
+        return false
       }
-      this.option.img = window.URL.createObjectURL(file.raw);
+      this.option.img = window.URL.createObjectURL(file.raw)
 
       // console.log(fileList)
     },
-    upload () {
+    upload() {
       console.log()
       this.$refs.cropper.getCropBlob(data => {
-        this.downImg = window.URL.createObjectURL(data);
+        this.downImg = window.URL.createObjectURL(data)
         console.log(this.downImg)
-      });
+      })
     }
 
-
-  },
-
-  mounted () {
-
   }
-};
+}
 </script>
 
 <style>

@@ -1,18 +1,15 @@
 <template>
-  <svg
-    class="svg-icon"
-    aria-hidden="true"
-  >
-    <use :xlink:href="iconName"></use>
+  <svg class="svg-icon" aria-hidden="true">
+    <use :xlink:href="iconName" />
   </svg>
 </template>
 
 <script>
 export default {
-  name: 'icon-svg',
+  name: 'IconSvg',
   props: ['iconClass'],
   computed: {
-    iconName () {
+    iconName() {
       return `#icon-${this.iconClass}`
     }
   }
@@ -28,5 +25,4 @@ export default {
   overflow: hidden;
 }
 </style>
-
 

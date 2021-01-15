@@ -3,20 +3,20 @@
     <div class="container">
       <img src="../../assets/logo.png">
     </div>
-    <div id="line"></div>
+    <div id="line" />
     <div class="heart">
-      <div class="left"></div>
-      <div class="right"></div>
-      <div class="bottom"></div>
+      <div class="left" />
+      <div class="right" />
+      <div class="bottom" />
     </div>
     <div class="circle-body">
       <div class="watch-face">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
+        <div class="circle" />
+        <div class="circle" />
+        <div class="circle" />
+        <div class="circle" />
+        <div class="circle" />
+        <div class="circle" />
       </div>
     </div>
 
@@ -48,7 +48,7 @@ export default {
   components: {
 
   },
-  data () {
+  data() {
     return {
 
     }
@@ -59,12 +59,12 @@ export default {
   },
   // 监控data中的数据变化
   watch: {},
-  // 方法集合
-  methods: {
+  // 生命周期 - 创建完成（可以访问当前this实例）
+  created() {
 
   },
-  // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
+  // 方法集合
+  methods: {
 
   }
 

@@ -1,24 +1,12 @@
 <template>
   <!-- 面包屑 -->
   <!-- separator:分隔符 -->
-  <el-breadcrumb
-    class="app-levelbar"
-    separator="/"
-  >
-    <el-breadcrumb-item
-      v-for="(item, index) in levelList"
-      :key="item.path"
-    >
+  <el-breadcrumb class="app-levelbar" separator="/">
+    <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
       <!-- 这里显示当前页面的面包屑名称 -->
-      <span
-        v-if="item.redirect === 'noredirect' || index == levelList.length - 1"
-        class="no-redirect"
-      >{{ item.name }}</span>
+      <span v-if="item.redirect === 'noredirect' || index == levelList.length - 1" class="no-redirect">{{ item.name }}</span>
       <!-- 显示前面的页面的可跳转面包屑名称 -->
-      <router-link
-        v-else
-        :to="item.redirect || item.path"
-      >{{
+      <router-link v-else :to="item.redirect || item.path">{{
         item.name
       }}</router-link>
     </el-breadcrumb-item>
@@ -27,16 +15,22 @@
 
 <script>
 export default {
-  created () {
-    this.getBreadcrumb()
-  },
-  data () {
+  data() {
     return {
       levelList: null
     }
   },
+  watch: {
+    // 监视$route的变化，变化就触发方法，这样面包屑的内容也会一直变化
+    $route() {
+      this.getBreadcrumb()
+    }
+  },
+  created() {
+    this.getBreadcrumb()
+  },
   methods: {
-    getBreadcrumb () {
+    getBreadcrumb() {
       // this.$route.matched包含当前路由的所有嵌套路径片段的路由记录
       // filter过滤器把符合条件的过滤出来，这个地方是把数组的item.name === true过滤出来
       let matched = this.$route.matched.filter(item => item.name)
@@ -48,12 +42,6 @@ export default {
         matched = [{ name: '首页', path: '/' }].concat(matched)
       }
       this.levelList = matched
-    }
-  },
-  watch: {
-    // 监视$route的变化，变化就触发方法，这样面包屑的内容也会一直变化
-    $route () {
-      this.getBreadcrumb()
     }
   }
 }

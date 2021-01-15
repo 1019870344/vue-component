@@ -3,12 +3,12 @@
     <!-- 正方体 -->
     <div class="container">
       <div class="boxes">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
+        <div class="box" />
+        <div class="box" />
+        <div class="box" />
+        <div class="box" />
+        <div class="box" />
+        <div class="box" />
       </div>
     </div>
     <div class="columns">
@@ -29,7 +29,7 @@
 export default {
   components: {
   },
-  data () {
+  data() {
     return {
     }
   },
@@ -39,11 +39,11 @@ export default {
   },
   // 监控data中的数据变化
   watch: {},
+  // 生命周期 - 创建完成（可以访问当前this实例）
+  created() {
+  },
   // 方法集合
   methods: {
-  },
-  // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
   }
 }
 </script>

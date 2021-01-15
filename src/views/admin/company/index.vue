@@ -17,7 +17,7 @@ export default {
   components: {
 
   },
-  data () {
+  data() {
     return {
       fileList: []
     }
@@ -29,38 +29,38 @@ export default {
   // 监控data中的数据变化
   watch: {},
   // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
+  created() {
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
-  mounted () {
+  mounted() {
 
   },
-  beforeCreate () { }, // 生命周期 - 创建之前
-  beforeMount () { }, // 生命周期 - 挂载之前
-  beforeUpdate () { }, // 生命周期 - 更新之前
-  updated () { }, // 生命周期 - 更新之后
-  beforeDestroy () { }, // 生命周期 - 销毁之前
-  destroyed () { }, // 生命周期 - 销毁完成
-  activated () { },
+  beforeCreate() { }, // 生命周期 - 创建之前
+  beforeMount() { }, // 生命周期 - 挂载之前
+  beforeUpdate() { }, // 生命周期 - 更新之前
+  updated() { }, // 生命周期 - 更新之后
+  beforeDestroy() { }, // 生命周期 - 销毁之前
+  destroyed() { }, // 生命周期 - 销毁完成
+  activated() { },
   // 方法集合
   methods: {
-    select (file, fileList) {
+    select(file, fileList) {
       console.log(file)
       console.log(fileList)
     },
-    handleImport () {
+    handleImport() {
       this.dialogExcelVisible = true
     },
     // 提交服务器
-    submitUpload () {
+    submitUpload() {
       this.$refs.upload.submit()
     },
     // 移除文件
-    handleRemove (file, fileList) {
+    handleRemove(file, fileList) {
       console.log(file, fileList)
     },
     // 文件变化
-    handleChange (file, fileList) {
+    handleChange(file, fileList) {
       if (fileList.length > 0) {
         this.fileList = [fileList[fileList.length - 1]] // 这一步，是 展示最后一次选择的csv文件
       }

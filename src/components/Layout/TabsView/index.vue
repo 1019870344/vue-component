@@ -1,30 +1,11 @@
 <template>
-  <div
-    id="tags-view-container"
-    class="tags-view-container"
-  >
-    <el-scrollbar
-      ref="scrollContainer"
-      :vertical="false"
-      class="tags-view-wrapper"
-      style="white-space: nowrap;"
-    >
-      <router-link
-        v-for="tag in visitedViews"
-        ref="tag"
-        :key="tag.path"
-        :class="isActive(tag.path)?'active':''"
-        :to="tag.path"
-        tag="span"
-        class="tags-view-item"
-      >
+  <div id="tags-view-container" class="tags-view-container">
+    <el-scrollbar ref="scrollContainer" :vertical="false" class="tags-view-wrapper" style="white-space: nowrap;">
+      <router-link v-for="tag in visitedViews" ref="tag" :key="tag.path" :class="isActive(tag.path)?'active':''" :to="tag.path" tag="span"
+        class="tags-view-item">
         {{ tag.name }}
         <!-- 关闭按钮 -->
-        <span
-          v-if="!isAffix(tag)"
-          class="el-icon-close"
-          @click.prevent.stop="closeViewTabs(tag)"
-        />
+        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeViewTabs(tag)" />
       </router-link>
     </el-scrollbar>
   </div>
@@ -32,29 +13,34 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {}
-  },
-  created () {
-    this.addViewTabs()
   },
   computed: {
     // 获取当前的路由
-    visitedViews () {
+    visitedViews() {
       return this.$store.state.app.visitedViews
     }
   },
+  watch: {
+    $route() {
+      this.addViewTabs()
+    }
+  },
+  created() {
+    this.addViewTabs()
+  },
   methods: {
     // 是否激活
-    isActive (path) {
+    isActive(path) {
       return path === this.$route.path
     },
     // 是否可以关闭
-    isAffix (tag) {
+    isAffix(tag) {
       return tag.name && tag.affix
     },
     // 关闭标签
-    closeViewTabs (view, $event) {
+    closeViewTabs(view, $event) {
       console.log($event)
       this.$store.dispatch('delVisitedViews', view)
       // 判断删掉的元素是否是当前正在浏览的页面
@@ -64,17 +50,17 @@ export default {
       }
       // $event.preventDefault() // 阻止元素的默认发生
     },
-    generateRoute () {
+    generateRoute() {
       if (this.$route.matched[this.$route.matched.length - 1].name) {
         return this.$route.matched[this.$route.matched.length - 1]
       }
       this.$route.matched[0].path = '/'
       return this.$route.matched[0]
     },
-    addViewTabs () {
+    addViewTabs() {
       this.$store.dispatch('addVisitedViews', this.generateRoute())
     },
-    toLastView (visitedViews, view) {
+    toLastView(visitedViews, view) {
       // slice()方法截取某个范围的数组的元素
       // 比如slice(1,3)，数组从0开始，包前不包后截取两个数，负数从后往前数
       // 这里是截取最后一个元素
@@ -92,11 +78,6 @@ export default {
           this.$router.push('/')
         }
       }
-    }
-  },
-  watch: {
-    $route () {
-      this.addViewTabs()
     }
   }
 }

@@ -88,14 +88,6 @@ export default new Router({
       meta: { title: '基础配置管理', icon: 'dashboard' },
       children: [
         {
-          path: 'userManager',
-          icon: 'fa-user',
-          component: _import('admin/user/index'),
-          name: '用户管理',
-          authority: 'userManager',
-          meta: { title: '用户管理', icon: 'dashboard' }
-        },
-        {
           path: 'companyManager',
           icon: 'category',
           component: _import('admin/company/index'),
@@ -158,14 +150,6 @@ export default new Router({
           name: '裁剪',
           authority: 'cropper',
           meta: { title: '裁剪', icon: 'dashboard' }
-        },
-        {
-          path: 'draggable',
-          icon: 'category',
-          component: _import('admin/approval/index'),
-          name: 'draggable',
-          authority: 'draggable',
-          meta: { title: 'draggable', icon: 'dashboard' }
         }
       ]
     },
