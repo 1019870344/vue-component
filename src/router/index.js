@@ -80,6 +80,34 @@ export default new Router({
       }]
     },
     {
+      path: '/change',
+      component: Layout,
+      meta: { title: 'change', icon: 'icon' },
+      children: [{
+        path: 'hToImg',
+        name: '截取HTML页面生成图片',
+        component: _import('change/hToImg'),
+        meta: { title: '截取HTML页面生成图片', icon: 'icon' }
+      },
+      {
+        path: 'wordToImg',
+        name: '文字转图片',
+        component: _import('change/wordToImg'),
+        meta: { title: '文字转图片', icon: 'icon' }
+      }]
+    },
+    {
+      path: '/cropper',
+      component: Layout,
+      meta: { title: '裁剪', icon: 'icon' },
+      children: [{
+        path: 'cropper',
+        name: '裁剪',
+        component: _import('cropper/cropper'),
+        meta: { title: '裁剪', icon: 'icon' }
+      }]
+    },
+    {
       path: '/dashboard',
       component: Layout,
       name: '基础配置管理',
