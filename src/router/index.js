@@ -108,6 +108,17 @@ export default new Router({
       }]
     },
     {
+      path: '/canvas',
+      component: Layout,
+      meta: { title: 'canvas', icon: 'icon' },
+      children: [{
+        path: 'canvas',
+        name: 'canvas',
+        component: _import('canvas/canvas'),
+        meta: { title: 'canvas', icon: 'icon' }
+      }]
+    },
+    {
       path: '/dashboard',
       component: Layout,
       name: '基础配置管理',
@@ -178,6 +189,14 @@ export default new Router({
           name: '裁剪',
           authority: 'cropper',
           meta: { title: '裁剪', icon: 'dashboard' }
+        },
+        {
+          path: 'export',
+          icon: 'category',
+          component: _import('admin/export/index'),
+          name: '导入导出',
+          authority: 'export',
+          meta: { title: '导入导出', icon: 'dashboard' }
         }
       ]
     },
